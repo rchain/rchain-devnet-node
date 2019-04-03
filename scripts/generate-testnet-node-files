@@ -32,7 +32,7 @@ mkdir -p "$out_dir"
 echo -n >"$out_dir/validator-public-keys.txt"
 
 for i in {0..9}; do
-	host=node$i.testnet.rchain-dev.tk
+	host=node$i.devnet.rchain-dev.tk
 	node_dir="$out_dir/$host"
 	mkdir -p "$node_dir"
 	$scripts_dir/generate-node-files $host "$node_dir" "$bootstrap_url"

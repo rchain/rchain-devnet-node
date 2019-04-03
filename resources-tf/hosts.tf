@@ -17,19 +17,20 @@ resource "google_compute_instance" "node_host" {
   count = "${var.node_count}"
   name = "${var.resources_name}-node${count.index}"
   hostname = "node${count.index}${var.dns_suffix}"
-  machine_type = "custom-4-16384"
+  machine_type = "n1-highmem-2"
 
   boot_disk {
     initialize_params {
       image = "ubuntu-os-cloud/ubuntu-1810"
       size = 160
-      type = "pd-ssd"
+      type = "pd-standard"
     }
   }
 
   tags = [
     "${var.resources_name}-node-public",
     "${var.resources_name}-node-rpc",
+    "${var.resources_name}-node-p2p",
     "collectd-out",
     "elasticsearch-out",
     "logstash-tcp-out"
@@ -55,6 +56,6 @@ resource "google_compute_instance" "node_host" {
   }
 
   provisioner "remote-exec" {
-    script = "../bootstrap"
+    script = "../bootstrap.devnet"
   }
 }

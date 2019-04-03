@@ -30,5 +30,5 @@ if ! grep -Fqx 'AcceptEnv RD_OPTION_*' /etc/ssh/sshd_config; then
 fi
 
 mkdir -p -m700 /var/lib/rnode-static
-cp -u node-files/$(hostname).testnet.rchain-dev.tk/* /var/lib/rnode-static/
+cp -u node-files/$(hostname).devnet.rchain-dev.tk/* /var/lib/rnode-static/
 cp -u logback.xml node-files/validator-public-keys.txt /var/lib/rnode-static/
