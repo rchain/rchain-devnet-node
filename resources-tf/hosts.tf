@@ -56,6 +56,6 @@ resource "google_compute_instance" "node_host" {
   }
 
   provisioner "remote-exec" {
-    script = "../bootstrap.devnet"
+    script = "../bootstrap"
   }
 }
